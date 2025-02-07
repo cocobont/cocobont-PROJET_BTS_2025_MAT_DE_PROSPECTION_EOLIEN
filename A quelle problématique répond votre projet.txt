@@ -1,0 +1,47 @@
+Justifier alors l’utilité votre projet en exprimant le ou les besoins
+auxquels il doit répondre.
+
+A quelle problématique répond le sujet
+Le sujet répond à la problématique suivante :
+"La faisabilité de l'implantation d'un parc éolien sur le territoire de Beaucamps-le-Jeune."
+Il s'agit d'évaluer si l'installation d'éoliennes est viable d'un point de vue environnemental, technique et réglementaire, en étudiant notamment le gisement de vent, l'impact sur la faune (comme les chauves-souris) et le paysage.
+
+Justifier la nécessité du projet 
+
+La nécessité du projet d'implantation d'un parc éolien à Beaucamps-le-Jeune se justifie par plusieurs éléments issus du contexte énergétique en France :
+Objectifs nationaux de transition énergétique
+La loi de la transition énergétique pour la croissance verte (2015) fixe un objectif de 32 % d’énergies renouvelables en 2030. L’éolien, en tant qu’énergie propre et renouvelable, est un levier essentiel pour atteindre cette cible.
+Croissance de l’énergie éolienne en France
+En 2023, le parc éolien français atteint 22,0 GW, et la puissance des projets terrestres en cours est de 11,6 GW.
+La production éolienne a atteint 37,9 TWh en 2022, soit 8,3 % de la consommation électrique nationale.
+La dynamique de développement de l’éolien en France montre un besoin d’accélérer les installations pour assurer une production énergétique stable et durable.
+Positionnement de la France en Europe
+En 2018, la France était 4ᵉ en Europe en termes de puissance installée (15 108 MW), derrière l’Allemagne, l’Espagne et le Royaume-Uni.
+Pour rester compétitive et accroître son indépendance énergétique, la France doit poursuivre l’expansion de son parc éolien.
+Potentiel local et impact environnemental réduit
+L’étude du site (gisement de vent, impact sur la faune et le paysage) permet de s’assurer que l’implantation est pertinente.
+L’éolien contribue à réduire les émissions de gaz à effet de serre, participant ainsi aux engagements climatiques de la France.
+Ce projet s’inscrit dans une logique de développement durable, de sécurisation énergétique et d’alignement avec les objectifs nationaux et européens. Il répond à la nécessité d’augmenter la part d’énergies renouvelables en France tout en valorisant le potentiel éolien du territoire.
+
+Les exigences des tâches dans le diagramme des exigences du mât de prospection éolien sont les suivantes :
+
+1. Acquisition des conditions de vent
+Mesurer la vitesse du vent : précision de ±3 km/h sur une plage de 0 à 160 km/h.
+Mesurer la direction du vent : capable de distinguer 16 secteurs de la rose des vents.
+2. Communication et enregistrement des mesures
+Communiquer les mesures : transmission à une armoire centrale à une distance max de 200 m.
+Bus de terrain : transmission des mesures toutes les 2 minutes.
+Enregistrer les mesures en local : stockage en cas de panne du système de transmission pour une période de 5 jours.
+3. Collecte et transmission des données
+Collecter les données : transmission des mesures à un serveur IoT toutes les 2 minutes.
+Transmission RF : communication longue portée (jusqu'à 15 km) avec faible consommation d’énergie.
+4. Système d’information et interface utilisateur
+Système d’information : stockage des données sur un serveur web avec gestionnaire de base de données.
+Interface web : accès aux données de mesure via une interface utilisateur.
+Interface homme-machine (IHM) : permet à un technicien de sélectionner un capteur et lire les mesures en direct.
+5. Autonomie et fiabilité du système
+Être autonome en énergie : alimentation indépendante du réseau électrique.
+Diagnostiquer l’état du système : un technicien doit pouvoir vérifier le bon fonctionnement de la chaîne d’acquisition des mesures.
+Mesurer le temps : enregistrement de la date et l’heure des mesures à la seconde près.
+Stocker les données : sauvegarde sur carte SD au format CSV.
+Ces exigences assurent que le mât de prospection éolien fonctionne de manière fiable et autonome pour évaluer le potentiel éolien d’un site.
