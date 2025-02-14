@@ -61,3 +61,4 @@ https://docs.arduino.cc/arduino-cloud/guides/esp32/
 communication RF:
 https://www.rohde-schwarz.com/fr/produits/test-et-mesure/essentials-test-equipment/spectrum-analyzers/que-sont-des-technologies-frequence-radio-rf_256007.html#:~:text=Les%20propri%C3%A9t%C3%A9s%20de%20la%20RF,satellite%2C%20y%20compris%20le%20GPS
 
+RF bands spread in the range between 30 kHz and 300 GHz
