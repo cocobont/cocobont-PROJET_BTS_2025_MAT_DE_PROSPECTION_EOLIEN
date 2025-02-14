@@ -58,6 +58,3 @@ Base de Données SQL
         Les données sont envoyées à un broker MQTT (Eclipse Mosquitto) pour une communication en temps réel.
 
         Une interface web (Flask/Django) permet à l'exploitant de visualiser les données.
-apps-fileview.texmex_20250206.00_p0
-Matériels Informatiques&logiciels.txt
-Displaying Matériels Informatiques&logiciels.txt.
