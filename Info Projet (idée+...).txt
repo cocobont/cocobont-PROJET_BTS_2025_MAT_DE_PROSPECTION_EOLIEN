@@ -1,0 +1,48 @@
+PROJET 3
+MÂT DE PROSPECTION
+ÉOLIEN
+
+Récupération de données des capteur :
+- Semblable aux récup de données de capteur (récupération du tension de sortie -> convertir sur un certain nmb de bit exp : 1V = 1045 , convertir cette valeur 1045 en une certaine température ou vitesse)
+
+Enregistrement données ( semblable à des projets précédent de 1er années à enregistrer en .csv sur une carte sd ) 
+! puisque il y a 3 capteur à trois altitude différent les trois doivent enregistrer en horodater (millis ? ) mais surtout en ne pas supprimer les données précédentes)
+étroite colab avec l'aquisition
++ définir le format des données (ex:  2025-31-01-45°-22h15) vérifier comment formuler du  .csv
+envoyer les données :
+Via Wifi sur un server LaRaWAN ? 
+-> MQTT (JSON) -> BDD MySQL ?  
+local : 2min online: 5j
+potentielmment envoyer les 5j de csv vers bdd ?
+! crée un nouveau csv chaque jour
+
+
+Récupération de données en provenance de la bdd
+crée le site web (carte blanche ) tout en respectant le CDC
+ajouter un nombre x de widjet qui seront actualiser toute les 2min en fonction des données reçu de la BDD
+(! matcher le code html avc le nom des table / colonne de la bdd)
+(potentiellement utiliser flask pour acquérir les données de la bdd)
+
+QT:
+créations d'un app de supervision du matériel (capteur) , (sera lié étroite colab avec moi)
+Carte blanche sur comment le contruire
+
+doc:
+https://docs.arduino.cc/language-reference/en/functions/time/millis/
+https://www.youtube.com/watch?v=TduSOX6CMr4 (csv)
+https://docs.arduino.cc/arduino-cloud/guides/esp32/
+
+On travaille sur esp 32
+
+model csv 
+Timestamp, Interface_ID, Wind Speed, Wind Direction
+2025-02-03 14:05:00; ESP32_1; 12.5; 180
+2025-02-03 14:05:01; ESP32_2, 10.2; 175
+2025-02-03 14:05:02; ESP32_3, 11.0; 185
+
+veille techno
+https://www.revolution-energetique.com/eolienne-a-double-rotor-genie-ou-delire/
+https://www.greenunivers.com/2020/06/enbw-teste-une-double-eolienne-sur-flotteur-239048/
+https://usbeketrica.com/fr/article/la-chine-inaugure-une-eolienne-geante-capable-d-exploiter-la-puissance-des-typhons
+au dessus recherche nvlle tech eolien/ en dessous fonctionnement eolien
+https://www.planete-energies.com/fr/media/video/quest-ce-que-lenergie-eolienne
