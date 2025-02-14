@@ -1,0 +1,78 @@
+**Matériels Informatiques**
+
+    Capteurs de Vent :
+
+        Anémomètre : Pour mesurer la vitesse du vent.
+
+        Girouette : Pour mesurer la direction du vent.
+
+        Capteurs de Hauteur : Pour mesurer à différentes hauteurs (60m, 70m, 80m).
+
+    Modules de Communication RF :
+
+        LoRa Modules : Pour la communication à longue portée avec faible consommation d'énergie.
+	LoRaWAN® utilise la bande de fréquences dite ISM, autour de 868 MHz en Europe, pour laquelle il n'y a pas de droits de licence ni de frais de téléphonie mobile.
+
+*Logiciels en Python
+
+    Bibliothèques pour la Communication MQTT :
+
+        Paho-MQTT : Une bibliothèque Python pour implémenter les clients MQTT.
+
+        Eclipse Mosquitto : Un broker MQTT open-source qui peut être utilisé pour gérer les messages entre les capteurs et le serveur.
+
+    Traitement des Données :
+
+        Pandas : Pour le traitement et l'analyse des données.
+
+        NumPy : Pour les calculs numériques.
+
+    Visualisation des Données :
+
+        Matplotlib : Pour créer des graphiques et des visualisations.
+
+        Plotly : Pour des visualisations interactives.
+
+    Interface Web :
+
+        Flask/Django : Frameworks web pour créer une interface web permettant à l'exploitant d'accéder aux données.
+
+Base de Données SQL
+
+    Systèmes de Gestion de Base de Données (SGBD) :
+
+        MySQL/PostgreSQL : Pour stocker et gérer les données de mesure.
+
+        SQLite : Pour une solution de base de données légère et embarquée.
+
+ Bibliothèques Python pour SQL :
+
+        SQLAlchemy : Pour l'interaction avec les bases de données SQL.
+
+        Psycopg2 : Un adaptateur PostgreSQL pour Python.
+
+
+   Collecte des Données :
+
+        Les capteurs collectent les données de vitesse et de direction du vent.
+
+        Les données sont transmises via RF à un serveur local (Raspberry Pi).
+
+    Traitement et Stockage :
+
+        Le serveur traite les données avec Python (Pandas, NumPy).
+
+        Les données sont stockées dans une base de données SQL (MySQL/PostgreSQL).
+
+    Communication :
+
+        Les données sont envoyées à un broker MQTT (Eclipse Mosquitto) pour une communication en temps réel.
+
+        Une interface web (Flask/Django) permet à l'exploitant de visualiser les données.
+
+    Sauvegarde et Diagnostic :
+
+        Les données sont sauvegardées sur un support amovible.
+
+        Un technicien peut diagnostiquer l'état du système via une interface technique.
+
