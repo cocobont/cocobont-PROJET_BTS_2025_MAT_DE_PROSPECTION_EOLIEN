@@ -40,9 +40,24 @@ Timestamp, Interface_ID, Wind Speed, Wind Direction
 2025-02-03 14:05:01; ESP32_2, 10.2; 175
 2025-02-03 14:05:02; ESP32_3, 11.0; 185
 
-veille techno
+veille techno et recherche technique
 https://www.revolution-energetique.com/eolienne-a-double-rotor-genie-ou-delire/
 https://www.greenunivers.com/2020/06/enbw-teste-une-double-eolienne-sur-flotteur-239048/
 https://usbeketrica.com/fr/article/la-chine-inaugure-une-eolienne-geante-capable-d-exploiter-la-puissance-des-typhons
 au dessus recherche nvlle tech eolien/ en dessous fonctionnement eolien
 https://www.planete-energies.com/fr/media/video/quest-ce-que-lenergie-eolienne
+mqqt:
+https://www.emqx.com/en/blog/the-easiest-guide-to-getting-started-with-mqtt
+carte sd:
+https://passionelectronique.fr/carte-sd-arduino/
+LoraWan:
+https://docs.arduino.cc/learn/communication/lorawan-101/
+TBHM Gateway 
+https://pixel-networks.com/shop/mini-hub-tbmh100-366#attr=297
+video:
+https://www.youtube.com/watch?v=yW5y2P8zP1k (créer votre station méteo girouette)
+guide esp 32:
+https://docs.arduino.cc/arduino-cloud/guides/esp32/
+communication RF:
+https://www.rohde-schwarz.com/fr/produits/test-et-mesure/essentials-test-equipment/spectrum-analyzers/que-sont-des-technologies-frequence-radio-rf_256007.html#:~:text=Les%20propri%C3%A9t%C3%A9s%20de%20la%20RF,satellite%2C%20y%20compris%20le%20GPS
+
