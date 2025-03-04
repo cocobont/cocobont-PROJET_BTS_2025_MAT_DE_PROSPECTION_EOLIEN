@@ -1,0 +1,58 @@
+1️⃣ Programme Arduino pour l’Anémomètre (LEXCA003)
+const int pinAnemometre = 2;  // Broche numérique connectée à l'anémomètre
+volatile unsigned int nbImpulsions = 0;
+unsigned long dernierTemps = 0;
+float vitesseVent = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(pinAnemometre, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(pinAnemometre), compteurImpulsions, FALLING);
+}
+
+void loop() {
+  unsigned long tempsActuel = millis();
+  if (tempsActuel - dernierTemps >= 1000) {  // Calcul toutes les secondes
+    detachInterrupt(digitalPinToInterrupt(pinAnemometre));
+    vitesseVent = (nbImpulsions / 1.0) * 2.4;  // 1 impulsion/s = 2.4 km/h
+    Serial.print("Vitesse du vent : ");
+    Serial.print(vitesseVent);
+    Serial.println(" km/h");
+    nbImpulsions = 0;
+    dernierTemps = tempsActuel;
+    attachInterrupt(digitalPinToInterrupt(pinAnemometre), compteurImpulsions, FALLING);
+  }
+}
+
+void compteurImpulsions() {
+  nbImpulsions++;
+}
+2️⃣ Programme Arduino pour la Girouette (LEXCA002)
+const int pinGirouette = A0;  // Broche analogique connectée à la girouette
+int valeurAnalogique = 0;
+String directionVent = "";
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  valeurAnalogique = analogRead(pinGirouette);
+  directionVent = determinerDirection(valeurAnalogique);
+  Serial.print("Direction du vent : ");
+  Serial.println(directionVent);
+  delay(1000);
+}
+
+String determinerDirection(int valeur) {
+  if (valeur < 100) return "Nord";
+  else if (valeur < 200) return "Nord-Nord-Est";
+  else if (valeur < 300) return "Nord-Est";
+  else if (valeur < 400) return "Est-Nord-Est";
+  else if (valeur < 500) return "Est";
+  else if (valeur < 600) return "Est-Sud-Est";
+  else if (valeur < 700) return "Sud-Est";
+  else if (valeur < 800) return "Sud-Sud-Est";
+  else if (valeur < 900) return "Sud";
+  else return "Direction inconnue";
+}
