@@ -2,14 +2,14 @@ const int pinGirouette = 12;  // Broche analogique connectée à la girouette
 
 // Plages de tensions associées aux directions (en volts)
 float tensionsDirections[][2] = {
-  {2.39, 2.49},  // N (~2.39V)
-  {1.26, 1.46},  // NE (~1.36V)
-  {0.07, 0.27},  // E (~0.17V)
-  {0.36, 0.56},  // SE (~0.46V)
-  {0.69, 0.89},  // S (~0.79V)
-  {1.69, 2.09},  // SW (~1.89V)
-  {3.05, 3.25},  // W (~3.15V)
-  {2.71, 2.91}   // NW (~2.81V)
+  {0.0, 0.5},   // N (0°) : 0V à 0.5V
+  {0.5, 1.0},   // N-E (45°) : 0.5V à 1.0V
+  {1.0, 1.5},   // E (90°) : 1.0V à 1.5V
+  {1.5, 2.0},   // S-E (135°) : 1.5V à 2.0V
+  {2.0, 2.5},   // S (180°) : 2.0V à 2.5V
+  {2.5, 3.0},   // S-O (225°) : 2.5V à 3.0V
+  {3.0, 3.3},   // O (270°) : 3.0V à 3.3V
+  {0.0, 0.1}    // N-O (315°) : 0.0V à 0.1V
 };
 
 // Nom des directions
@@ -21,7 +21,7 @@ const char* directions[] = {
 float tolerance = 0.2;  // Tolérance de 0.2V pour chaque direction
 
 void setup() {
-  Serial.begin(115200);  // Initialisation de la communication série
+  Serial.begin(9600);  // Initialisation de la communication série
 }
 
 void loop() {
@@ -50,5 +50,5 @@ void loop() {
     Serial.println("Direction Inconnue");
   }
   
-  delay(2500);  // Attendre 1 seconde avant la prochaine lecture
+  delay(1000);  // Attendre 1 seconde avant la prochaine lecture
 }
