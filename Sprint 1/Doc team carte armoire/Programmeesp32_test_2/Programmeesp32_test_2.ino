@@ -21,15 +21,15 @@ void setup() {
 }
 
 void loop() {
-  int vitesse_vent = ar.getRandomUInt();
+  float vitesse_vent = ar.getRandomUInt();
   int vitesse_vent_int = (int)(vitesse_vent * 100);
   char payload[6];
   sprintf(payload, "%04X", vitesse_vent_int);
-
-
-  Serial.print("Envoi des données: ");
+  Serial.print("Envoi des données en decimal: ");
+  Serial.println(vitesse_vent);
+  Serial.print("Envoi des données en hexa: ");
   Serial.println(payload);
-  String command = "AT+DTRX=1,2,10," + String(payload);
+  String command = "AT+DTRX=1,2,10,0367" + String(payload);
   sendCommand(command.c_str());
   delay(30000);
 }
