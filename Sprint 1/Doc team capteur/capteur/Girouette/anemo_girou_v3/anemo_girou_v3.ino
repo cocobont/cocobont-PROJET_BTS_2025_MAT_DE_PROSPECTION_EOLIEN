@@ -187,3 +187,6 @@ void lireDirectionVent() {
   
   Serial.println("------------------------");
 }
+
+//crée objet girouette et anémomètre 
+///prennent comme argument constructeur le numéro de pin
