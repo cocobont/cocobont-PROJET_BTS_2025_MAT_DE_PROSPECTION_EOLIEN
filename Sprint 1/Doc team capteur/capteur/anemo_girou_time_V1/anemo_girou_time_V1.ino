@@ -188,7 +188,8 @@ int trouverDirectionPlusProche(float tension) {
 /**
  * Fonction pour déterminer les deux directions les plus proches et calculer leur proportion
  * Cela permet d'avoir une direction plus précise entre deux points cardinaux
- * @param tension La tension mesurée sur la girouette
+ * @param tension La tension mesur
+ ée sur la girouette
  * @param dir1 Variable pour stocker l'index de la première direction
  * @param dir2 Variable pour stocker l'index de la deuxième direction
  * @param pourcentage1 Variable pour stocker le pourcentage de la première direction

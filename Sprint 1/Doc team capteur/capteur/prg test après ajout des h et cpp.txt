@@ -1,0 +1,28 @@
+#include "Girouette.h"
+#include "Anemometre.h"
+
+// Définir les pins pour les capteurs
+const int PIN_ANEMOMETRE = 13;
+const int PIN_GIROUETTE = 12;
+
+// Créer les objets
+Girouette girouette(PIN_GIROUETTE);
+Anemometre anemometre(PIN_ANEMOMETRE);
+
+void setup() {
+  Serial.begin(115200);
+  Serial.println("Station météo initialisée");
+  Serial.println("------------------------");
+}
+
+void loop() {
+  // Lecture et affichage de la direction du vent
+  girouette.lireDirectionVent();
+  
+  // Vérification et affichage de la vitesse du vent
+  if (anemometre.verifierVitesseVent()) {
+    anemometre.afficherVitesseVent();
+  }
+  
+  delay(2500);  // Pause avant la prochaine lecture
+}

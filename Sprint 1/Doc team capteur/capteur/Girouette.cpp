@@ -1,71 +1,18 @@
-const int pinAnemometre = 13;  // Broche numérique pour l'anémomètre
-const int pinGirouette = 12;   // Broche analogique pour la girouette
-volatile unsigned int nbImpulsions = 0;  // Compteur d'impulsions pour l'anémomètre
-unsigned long dernierTemps = 0;          // Dernier temps pour le calcul de la vitesse du vent
-float vitesseVent = 0;                   // Vitesse du vent en km/h
+#include "Girouette.h"
 
-// Tensions associées aux directions (en volts)
-float tensionsDirections[] = {
-  2.44,  // N  (0°)
-  1.36,  // NE (45°)
-  0.17,  // E  (90°)
-  0.46,  // SE (135°)
-  0.79,  // S  (180°)
-  1.89,  // SO (225°)
-  3.15,  // O  (270°)
-  2.81   // NO (315°)
-};
-
-// Degrés associés à chaque direction
-int degreesDirections[] = {0, 45, 90, 135, 180, 225, 270, 315};
-
-// Nom des directions
-const char* directions[] = {"N", "N-E", "E", "S-E", "S", "S-O", "O", "N-O"};
-
-// Tolérance pour la détection des directions
-float tolerance = 0.2;
-
-void setup() {
-  Serial.begin(115200);
-  pinMode(pinAnemometre, INPUT);
-  attachInterrupt(digitalPinToInterrupt(pinAnemometre), compteurImpulsions, FALLING);
-  
-  Serial.println("Station météo initialisée");
-  Serial.println("------------------------");
-}
-
-void loop() {
-  unsigned long tempsActuel = millis();
-  
-  // Lecture et affichage de la direction du vent
-  lireDirectionVent();
-  
-  // Vérification toutes les secondes pour la vitesse du vent
-  if (tempsActuel - dernierTemps >= 1000) {
-    vitesseVent = (nbImpulsions / 1.0) * 2.4;
-    Serial.print("Vitesse du vent : ");
-    Serial.print(vitesseVent);
-    Serial.println(" km/h");
-    nbImpulsions = 0;
-    dernierTemps = tempsActuel;
-  }
-  
-  delay(2500);  // Pause avant la prochaine lecture
-}
-
-// Fonction d'interruption pour compter les impulsions de l'anémomètre
-void compteurImpulsions() {
-  nbImpulsions++;
+// Constructeur
+Girouette::Girouette(int pin) : _pinGirouette(pin) {
+  pinMode(_pinGirouette, INPUT);
 }
 
 // Fonction pour trouver l'index de la direction la plus proche
-int trouverDirectionPlusProche(float tension) {
+int Girouette::trouverDirectionPlusProche(float tension) {
   int indexPlusProche = -1;
   float differenceMin = 5.0;  // Valeur initiale supérieure à toute différence possible
   
   for (int i = 0; i < 8; i++) {
-    float difference = abs(tension - tensionsDirections[i]);
-    if (difference < differenceMin && difference < tolerance) {
+    float difference = abs(tension - _tensionsDirections[i]);
+    if (difference < differenceMin && difference < _tolerance) {
       differenceMin = difference;
       indexPlusProche = i;
     }
@@ -75,7 +22,7 @@ int trouverDirectionPlusProche(float tension) {
 }
 
 // Fonction pour déterminer les deux directions les plus proches et calculer leur proportion
-void trouverDirectionsRelatives(float tension, int &dir1, int &dir2, float &pourcentage1, float &pourcentage2) {
+void Girouette::trouverDirectionsRelatives(float tension, int &dir1, int &dir2, float &pourcentage1, float &pourcentage2) {
   // Initialiser avec des valeurs par défaut
   dir1 = -1;
   dir2 = -1;
@@ -87,7 +34,7 @@ void trouverDirectionsRelatives(float tension, int &dir1, int &dir2, float &pour
   float diff2 = 5.0;
   
   for (int i = 0; i < 8; i++) {
-    float diff = abs(tension - tensionsDirections[i]);
+    float diff = abs(tension - _tensionsDirections[i]);
     
     if (diff < diff1) {
       diff2 = diff1;
@@ -125,9 +72,9 @@ void trouverDirectionsRelatives(float tension, int &dir1, int &dir2, float &pour
   }
 }
 
-// Fonction pour lire et afficher la direction du vent avec plus de précision
-void lireDirectionVent() {
-  int valeurNumerique = analogRead(pinGirouette);
+// Fonction pour lire et afficher la direction du vent
+void Girouette::lireDirectionVent() {
+  int valeurNumerique = analogRead(_pinGirouette);
   float tensionLue = valeurNumerique * (3.3 / 4095);
   Serial.print("Tension lue : ");
   Serial.println(tensionLue, 4);
@@ -137,9 +84,9 @@ void lireDirectionVent() {
   
   if (indexDirection >= 0) {
     // Direction exacte en degrés
-    int degres = degreesDirections[indexDirection];
+    int degres = _degreesDirections[indexDirection];
     Serial.print("Direction principale : ");
-    Serial.print(directions[indexDirection]);
+    Serial.print(_directions[indexDirection]);
     Serial.print(" (");
     Serial.print(degres);
     Serial.println("°)");
@@ -154,11 +101,11 @@ void lireDirectionVent() {
       Serial.print("Composition : ");
       Serial.print(round(pourcentage1));
       Serial.print("% ");
-      Serial.print(directions[dir1]);
+      Serial.print(_directions[dir1]);
       Serial.print(" + ");
       Serial.print(round(pourcentage2));
       Serial.print("% ");
-      Serial.println(directions[dir2]);
+      Serial.println(_directions[dir2]);
       
       // Calculer une direction en degrés plus précise
       float degresPrecis;
@@ -166,15 +113,15 @@ void lireDirectionVent() {
       if ((dir1 == 0 && dir2 == 7) || (dir1 == 7 && dir2 == 0)) {
         // Si on est entre NO (315°) et N (0°/360°)
         if (dir1 == 0) {
-          degresPrecis = (pourcentage1 * degreesDirections[dir1] + pourcentage2 * (degreesDirections[dir2] - 360)) / 100;
+          degresPrecis = (pourcentage1 * _degreesDirections[dir1] + pourcentage2 * (_degreesDirections[dir2] - 360)) / 100;
           if (degresPrecis < 0) degresPrecis += 360;
         } else {
-          degresPrecis = (pourcentage1 * degreesDirections[dir1] + pourcentage2 * (degreesDirections[dir2] + 360)) / 100;
+          degresPrecis = (pourcentage1 * _degreesDirections[dir1] + pourcentage2 * (_degreesDirections[dir2] + 360)) / 100;
           if (degresPrecis >= 360) degresPrecis -= 360;
         }
       } else {
         // Cas normal
-        degresPrecis = (pourcentage1 * degreesDirections[dir1] + pourcentage2 * degreesDirections[dir2]) / 100;
+        degresPrecis = (pourcentage1 * _degreesDirections[dir1] + pourcentage2 * _degreesDirections[dir2]) / 100;
       }
       
       Serial.print("Direction précise : ");
@@ -188,5 +135,17 @@ void lireDirectionVent() {
   Serial.println("------------------------");
 }
 
-//crée objet girouette et anémomètre 
-///prennent comme argument constructeur le numéro de pin
+// Getters pour récupérer les directions et degrés
+const char* Girouette::getDirectionName(int index) {
+  if (index >= 0 && index < 8) {
+    return _directions[index];
+  }
+  return "Inconnu";
+}
+
+int Girouette::getDirectionDegrees(int index) {
+  if (index >= 0 && index < 8) {
+    return _degreesDirections[index];
+  }
+  return -1;
+}
