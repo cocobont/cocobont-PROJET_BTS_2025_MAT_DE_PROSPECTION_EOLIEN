@@ -33,20 +33,23 @@ public:
         IHM->resize(415, 347);
         pushButton_regler = new QPushButton(IHM);
         pushButton_regler->setObjectName("pushButton_regler");
-        pushButton_regler->setGeometry(QRect(280, 160, 71, 21));
+        pushButton_regler->setGeometry(QRect(290, 160, 61, 21));
+        QFont font;
+        font.setPointSize(8);
+        pushButton_regler->setFont(font);
         pushButton_quitter = new QPushButton(IHM);
         pushButton_quitter->setObjectName("pushButton_quitter");
-        pushButton_quitter->setGeometry(QRect(280, 180, 71, 21));
+        pushButton_quitter->setGeometry(QRect(290, 180, 61, 21));
         lineEdit = new QLineEdit(IHM);
         lineEdit->setObjectName("lineEdit");
         lineEdit->setGeometry(QRect(50, 60, 301, 51));
         dateTimeEdit = new QDateTimeEdit(IHM);
         dateTimeEdit->setObjectName("dateTimeEdit");
         dateTimeEdit->setGeometry(QRect(50, 110, 301, 51));
-        QFont font;
-        font.setPointSize(20);
-        font.setBold(true);
-        dateTimeEdit->setFont(font);
+        QFont font1;
+        font1.setPointSize(20);
+        font1.setBold(true);
+        dateTimeEdit->setFont(font1);
 
         retranslateUi(IHM);
 

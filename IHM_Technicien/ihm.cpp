@@ -25,7 +25,7 @@ void IHM::on_pushButton_quitter_clicked()
 
 void IHM::on_pushButton_regler_clicked()
 {
-
-
+    QDateTime dateHeure = ui->dateTimeEdit->dateTime();
+    ui->lineEdit->setText(dateHeure.toString("dd/MM/yyyy HH:mm:ss"));
 }
 
