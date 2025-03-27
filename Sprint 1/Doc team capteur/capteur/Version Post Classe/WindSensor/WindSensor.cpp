@@ -7,7 +7,7 @@ volatile unsigned int impulses = 0;
 
 // Constructeur de la classe WindSensor
 // Il initialise les broches et les variables internes
-WindSensor::WindSensor(int pinAnemometer, int pinVane)
+WindSensor::WindSensor(int pinAnemometer, int pinVane) //Vane veut dire weathervane = Girouette
     : _pinAnemometer(pinAnemometer), _pinVane(pinVane), _nbImpulses(0), _lastTime(0) {}
 // Ici, `: _pinAnemometer(pinAnemometer), _pinVane(pinVane), ...` est une **liste d'initialisation**
 // qui assigne directement les valeurs aux attributs de la classe.
