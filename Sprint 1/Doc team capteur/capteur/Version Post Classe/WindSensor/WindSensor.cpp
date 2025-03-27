@@ -64,7 +64,7 @@ const char* WindSensor::getWindDirection() {
     int index = findClosestDirection(tension);
 
     // Retourne la direction correspondante (ex: "Nord", "Sud-Ouest", etc.)
-    return index >= 0 ? _directions[index] : "Inconnue";
+    return index >= 0 ? _directions[index] : "Inconnue"; // >= signifie si index est > ou + à 0 alors return _directions[index] sinon return "inconnue"
 }
 
 
